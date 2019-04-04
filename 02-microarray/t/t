@@ -1,0 +1,34 @@
+\author {
+	Adam Kurkiewicz \\
+    University of Glasgow\\
+    College of Medical, Veterinary and Life Sciences\\
+    \href{mailto:a.kurkiewicz.1@research.gla.ac.uk}{a.kurkiewicz.1@research.gla.ac.uk}
+}
+
+\date{\today}
+
+\documentclass[12pt]{article}
+
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage[authordate,backend=biber,autolang=none,booklongxref=false, bibencoding=utf-8,strict, annotation]{biblatex-chicago}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\usepackage{fontspec}
+\usepackage[shortcuts]{extdash}
+\usepackage{dsfont}
+\usepackage{amsmath}
+\usepackage{float}
+
+\setmainfont[Ligatures=TeX]{Linux Libertine O}
+
+\addbibresource{main.bib}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+\usepackage{mathtools}
+\newcommand\givenbase[1][]{\:#1\lvert\:}
+\let\given\givenbase
+\newcommand\sgiven{\givenbase[\delimsize]}
+\DeclarePairedDelimiterX\Basics[1](){\let\given\sgiven #1}

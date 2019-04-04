@@ -17,7 +17,6 @@
 \usepackage{bookmark}
 
 
-
 \usepackage{url}
 \usepackage{hyperref}
 \usepackage[authordate,backend=biber,autolang=none,booklongxref=false,%
@@ -46,6 +45,24 @@ annotation]{biblatex-chicago}
 \let\given\givenbase
 \newcommand\sgiven{\givenbase[\delimsize]}
 \DeclarePairedDelimiterX\Basics[1](){\let\given\sgiven #1}
+
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{fontspec}
+\usepackage[shortcuts]{extdash}
+\usepackage{dsfont}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{definition}{Definition}[section]
+\DeclareMathOperator{\Prod}{Prod}
+\DeclareMathOperator{\Uniform}{Uniform}
+\DeclareMathOperator{\avg}{avg}
+\DeclareMathOperator{\linregress}{linregress}
+\DeclareMathOperator{\AS}{AS}
 
 
 
