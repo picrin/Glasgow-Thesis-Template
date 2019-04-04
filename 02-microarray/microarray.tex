@@ -1,4 +1,5 @@
-
+\chapter{Microarrays}
+\label{c:microarrays}
 \section{Introduction}
 
 The purpose of research conducted in the first year of my PhD programme was to search for and investigate possible ways of improving standard techniques in microarray analysis, including detection of differentially expressed and alternatively spliced genes. The research was based on a dataset obtained from patients with myotonic dystrophy and healthy controls. 
@@ -139,10 +140,11 @@ First, all probes belonging to a single gene, as identified in section \ref{sect
 
 The result of this operation can be plotted against modal allele length and for any particular gene. Figure \ref{avgILF3} is an example plot for Interleukin enhancer-binding factor 3 (ILF3). It can be seen in the plot that despite high variability of ILF3 mean expression intensity across patients, there is a slight trend for higher expression in patients with longer MAL. This potential effect of differential expression will have to be corrected for when looking at differential alternative splicing at the level of any exon in ILF3.
 
-\begin{figure}[ht] \label{avgILF3}
+\begin{figure}[ht]
 	\centering
 	\includegraphics[width=135mm]{avgILF3.png}
 	\caption{Mean expression level of Interleukin enhancer-binding factor 3 vs Modal Allele Length}
+	\label{avgILF3}
 \end{figure}
 
 \subsubsection{Computing Differential Alternative Splicing Indicator} \label{subsection_DASI}
