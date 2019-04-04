@@ -16,6 +16,40 @@
 \usepackage{amssymb}
 \usepackage{bookmark}
 
+
+
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage[authordate,backend=biber,autolang=none,booklongxref=false,%
+bibencoding=utf-8,strict,%
+annotation]{biblatex-chicago}
+\usepackage{graphicx}
+\usepackage[section]{placeins}
+\usepackage{fontspec}
+\usepackage[shortcuts]{extdash}
+\usepackage{dsfont}
+\usepackage{amsmath}
+
+\setmainfont[Ligatures=TeX]{Linux Libertine O}
+
+% TODO uncomment this
+%\setmainfont[Ligatures=TeX]{Arial}
+
+\addbibresource{dissertation.bib}
+%\addbibresource[datatype=ris]{irizarry.bib}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+\usepackage{mathtools}
+\newcommand\givenbase[1][]{\:#1\lvert\:}
+\let\given\givenbase
+\newcommand\sgiven{\givenbase[\delimsize]}
+\DeclarePairedDelimiterX\Basics[1](){\let\given\sgiven #1}
+
+
+
+
 %\usepackage{natbib}
 
 \usepackage{color}
@@ -45,7 +79,7 @@
 \fancyfoot{}                            % Delete current footer settings
 \renewcommand{\headrulewidth}{0.2pt}
 \fancyhead[LE,RO]{\bfseries\thepage}    % Page number (boldface): left-even, right-odd
-%\fancyhead[RE]{\bfseries\nouppercase{\leftmark}}      % Chapter in the right on even pages
+%\fancyhead[RE]{\bfseries\nouppercase{\leftmark}}      % Chapter in the right on even pages   
 \fancyhead[LO]{\bfseries\nouppercase{\rightmark}}     % Section in the left on odd pages
 
 
