@@ -1,8 +1,6 @@
 \chapter{Introduction}
 \label{c:intro}
 
-\note{Introductory text goes here!}
-
 %\date{\today}
 
 %\documentclass[12pt]{article}
@@ -57,7 +55,7 @@ Encyclopædia Britannica \parencite[Bioinformatics]{Lesk2016} identifies the fol
 \item pharmacogenomics, metagenomics and metaproteomics.
 \end{itemize}
 
-This list of the ``omics fields'', as given by the \textit{Encylopædia} is not complete, nor could it be. It doesn't for example include lipidomics, which \textcite{Wenk2005} defines as ``systems-level analysis of lipids and factors that interact with lipids''. The reason for this lack of completeness is the \textit{rate of change} of the ``omics'' fields. New ways of obtaining large quantities of data about living organisms are continuously discovered, while the accuracy, cost and feasibility of the old techniques is improved.
+This list of the ``omics fields'', as given by the \textit{Encylopædia} is not complete, nor could it be. It doesn't for example include lipidomics, which \textcite{Wenk2005} defines as ``systems-level analysis of lipids and factors that interact with lipids''. The reason for this lack of completeness is the \textit{speed of change} of the ``omics'' fields. New ways of obtaining large quantities of data about living organisms are continuously discovered, while the accuracy, cost and feasibility of the old techniques is improved.
 
 \subsection{Rapid Evolution of Omics}
 
@@ -73,20 +71,30 @@ A good example at the time of the writing is a shift from an established techniq
 
 \subsection{Breadth of data gathering techniques in Omics}
 
-The omics fields not only evolve quickly, but also feature significant breadth of techniques involved. Metabolomics for example involves working with Nuclear Magnetic Resonance (NMR), Mass Spectrometry (MS), Raman Spectroscopy (RS) and Infrared Spectroscopy (IR) data \parencite{Madsen2010}. This breadth is further exacerbated by a great variety within each technique. If we look at Mass Spectrometry, in order to perform an analysis one has to choose from one of many types of MS detectors, chromatographs and extraction types. With this amount of choice one quickly gets hundreds, if not thousands of possible sub-techniques.
+The omics fields not only evolve quickly, but also feature significant breadth of experimental techniques involved. Metabolomics for example involves working with Nuclear Magnetic Resonance (NMR), Mass Spectrometry (MS), Raman Spectroscopy (RS) and Infrared Spectroscopy (IR) data \parencite{Madsen2010}. This breadth is further exacerbated by a great variety within each technique. If we look at Mass Spectrometry, in order to perform an analysis one has to choose from one of many types of MS detectors, chromatographs and extraction types. With this amount of choice one quickly gets hundreds, if not thousands of possible sub-techniques.
+
+TODO address Question to Martin
 
 \subsection{Importance of generic data analysis tools}
 
-With such variety of rapidly evolving techniques involved, a need emerged to develop generic data analysis methods \& techniques, which can be applied to a wide range of omics fields and provide better insights into the nature of objects studied by these fields, be it genes, proteins, metabolites or lipids. Such methods need to cover as many existing data gathering techniques as possible and be resistant to their rapid change.
+With such variety of rapidly evolving techniques involved, a need emerged to develop generic data analysis methods \& techniques, which can be applied to a wide range of omics fields and provide better insights into the nature of objects studied by these fields, be it genes, proteins, metabolites or lipids. Ideally, such methods would cover as many existing data gathering techniques as possible and be resistant to their rapid change.
 
 It appears that Individual Specific Effects (\textbf{ISE}) may be such generic tool. We introduce them with appropriate background in section 
-\ref{ISE}
+\ref{ISE}.
+
+\subsection{Predictors}
+
+A widespread paradigm in biological and clinical research are case-control studies, using frequentist statistics tools focusing on hypothesis testing (inference). Examples of such tools include GWAS designs \parencite{Bush2012}, placebo and active control clinical trial designs \parencite{Brody2016}, non-inferiority designs \parencite{DAgostino2002} or heredity designs based on twin studies. It is reported that designs of as many as 70\%  of studies published in leading medical journals use at most the following three statistical tests as part of their design: Student's t-test, Fisher's exact test and Chi-square test \parencite{Prel2010}.
+
+A possible alternative to the focus on hypothesis testing is building predictors or classifiers, which produce a numerical estimate of a given trait (height, size of the DM1 trinucleotide expansion) or effect size, predict participant's category (such as affected/unaffected) or estimate the effect size of the treatment, given a set of independent variables (e.g. genotypes, mRNA profiles, etc.). If necessary, the efficacy of these predictors/classifiers can be evaluated using traditional frequentist tools, such as p-values.
+
+Predictors have been successfully applied in genetics research. For example, \textcite{Lello2017} report predicting human height from genotype data, obtained using human SNP microarrays, to within a few centimeters for most participants in their sample. This level of accuracy is achieved by a very large sample size of nearly half a million individuals. A review by \textcite{VanRaden2009} reports ability to predict dairy output of certain cattle breeds with R\textsuperscript{2} of 49\%, using non-linear models based on SNP microarrays. The work of \textcite{Azencott2013} allows to incorporate prior information about biological networks into the predictive model, increasing prediction accuracy, and again is targeting the genomics community. In a work, which is a direct motivations behind some of the research presented in this thesis, \textcite{Lee2013} report being able to predict most of Huntington disease trinucleotide repeat size using mRNA profiling of lymphoblastoid cell lines.
 
 \section{Omics Data analysis}
 
 \subsection{Differentially responding features}
 
-Although data analysis tasks vary from one omics field to another, one of the major data analysis tasks among these is to look at a whole genome, proteome, metabolome, lipidome, etc. and identify the genes, proteins, metabolites, lipids, etc., whose levels change in response to the change in treatment, disease status or other conditions. Borrowing terminology from Machine Learning we can use the word \textbf{feature} as a collective name for genes, proteins, metabolites, lipids, and others alike.
+Although data analysis tasks vary from one omics field to another, one of the major data analysis tasks among these is to look at a whole genome, proteome, metabolome, lipidome, etc. and identify the genes, proteins, metabolites, lipids, etc., whose levels change in response to the change in treatment, disease status or other conditions. Borrowing terminology from machine learning we can use the word \textbf{feature} as a collective name for genes, proteins, metabolites, lipids, and others alike.
 
 Such analysis, if successful, yields a list of features, which can be given to domain specialists (geneticists, molecular biologists, pharmacologists) for further analysis.
 
@@ -97,13 +105,13 @@ There is no universally agreed criteria, by which one can distinguish differenti
         \item Removing from consideration data points, whose signal is not significantly greater than background noise \parencite{Smyth2004}
         \item Accounting for systematic bias, which results from physical constraints of the experimental technique, like geometry of the microarray, change in temperature in the laboratory between running subsequent experiments, and even damage due to atmospheric ozone \parencite{Fare2003}. This process is known as normalisation \parencite{Wit2004}.
     \end{enumerate}
-    \item One can use General Linear Models (GLMs) and corresponding t-statistic, F-statistic, B-statistic or fold change to order features according to the likelihood of differential response to treatment. \parencite{Smyth2004}
-    \item One has to account for the multiplicity effect, which results from considering thousands or millions of data points at once \parencite{Wit2004} We discuss possible measures to account for this effect in the next subsection.
+    \item One can use General Linear Models (GLMs) and corresponding t-statistic, F-statistic, B-statistic or fold change to order features according to the measured strength of differential response to treatment \parencite{Smyth2004}.
+    \item One has to account for the multiplicity effect, which results from considering thousands or millions of data points at once \parencite{Wit2004}. We discuss possible measures to account for this effect in the next subsection.
 \end{enumerate}
 
 \subsection{False Discovery Rate} \label{FDR}
 
-Let us consider a collection of features $$x_{1}, \ldots, x_{n}$$ where $n$ is the number of features under consideration. Depending on the experimental technique, the magnitude of $n$ can vary from about $10^{3}$ to about $10^{6}$.
+Let us consider a collection of features $$x_{1}, \ldots, x_{n}$$ where $n$ is the number of features under consideration. Depending on the high throughput technique used, the magnitude of $n$ can be in the range of $10^{3}$ to about $10^{6}$.
 
 For each feature $x_{i}$ let us collect intensity measurements $$M_{i,1}, \ldots, M_{i,k}$$ where k is the number of individuals under investigation and $$(m_{i,1}, \ldots m_{i,k})$$ are the measured values. For each feature $x_{i}$ let us define a null hypothesis $N_{i}$, which states that $x_{i}$ does not respond differentially to the changes in treatment. Once we have decided on appropriate statistic $$T(M_{i,1}, \ldots M_{i,k})$$ which captures the notion of ``differential response'', we can define a p-value $p_{i}$ as the probability of observing the same, or more extreme value of the statistic under $N_{i}$, i.e.  $$p_{i}=\mathds{P}(T(m_{i,1}, \ldots m_{i,k}) \geq T(m_{i,1}, \ldots m_{i,k}) \given N_{i})$$
 
@@ -122,7 +130,7 @@ A bioinformatician will usually use an existing implementation of the techniques
 
 \subsubsection{Bioconductor}
 
-Bioconductor is a collection of software packages for R programming language, which implements tools for analysis and comprehension of genomic data \parencite{Huber2017}. Bioconductor contains over 1296 packages \parencite{Bioconductor}. It is open-source, and developed by a diverse community of users. Although the scope and quality of packages distributed as part of Bioconductor varies, some of its packages are notable for being both applicable to a wide array of data gathering techniques and of high quality. One of such packages is Limma, which allows for analysis of microarray data, and is discussed separately. R \& Bioconductor are popular in the biostatistical community.
+Bioconductor is a collection of software packages for R programming language, which implements tools for analysis and comprehension of genomic data \parencite{Huber2017}. Bioconductor contains over 1296 packages \parencite{Bioconductor}. It is open-source, and developed by a diverse community of users. Although the scope and quality of packages distributed as part of Bioconductor varies, some of its packages are notable for being both applicable to a wide array of data gathering techniques and of high quality. One of such packages is Limma, which allows for analysis of microarray data, and is discussed separately. R \& Bioconductor are popular in the biostatistics community.
 
 \subsubsection{Limma}
 
@@ -131,6 +139,31 @@ Limma is a software package, distributed as part of Bioconductor. It addresses t
 \subsubsection{Biopython}
 
 Biopython is a software library, which partially overlaps, but mostly complements the functionality of Bioconductor. It is likewise open-source, but it's written in Python programming language and is popular in the bioinformatics community. Biopython's main strength is working with biological sequences, and it allows for a range of sequence manipulation operations, such as two sequence alignment, multiple sequence alignment, sequence assembly, translation of RNA \symbol{8594} DNA sequences, as well as connects to multiple online databases, such as the NCBI Entrez Utilities, ExPASy, InterPro, KEGG and SCOP.Bio.Blast \parencite{Cock2009}. Biopython also includes some rudimentary support for working with microarray data \parencite{Zuzan2004,Kurkiewicz2016}, but this support lacks the sophistication and capability of Biconductor and Limma.
+
+\subsubsection{Scanpy}
+
+Specialised experimental techniques might require specialised software. A good example are techniques developed to perform (droplet-based) single-cell RNA sequencing. The techniques allow to inspect RNA contents of a cell through cell isolation, using dilution, micromanipulation or Flow Activated Cell Sorting (FACS) (TODO cite https://doi.org/10.1038/s12276-018-0071-8). Or, more recently, microfluidics (TODO cite drop-seq paper). After cell isolation cells are lysed, followed by an optional polyA selection to enrich for mature mRNA of total RNA captured, a step which, for droplet-based techniques, includes cellular and molecular barcoding, followed by reverse transcription and eventually NGS.
+
+This experimental process produces several sources of bias and error, including:
+\begin{enumerate}
+\item PCR bias (partially resolved with DNA barcoding in droplet-based techniques).
+\item Drop-out, which is a phenomenon where counts of random genes are incorrectly measured to be 0.
+\item Stochasticity of RNA capture and RNA expression (e.g. monoallelic expression) (TODO cite Peter Kharchenko's CNV paper).
+\item Misaligning or multiple mapping NGS reads or issues with NGS library preparation.
+\end{enumerate}
+
+Noise is not the only challenge in analysing scRNASeq data. Statistical methods and visualisation are both important parts of the analysis.
+
+A number of specialised software packages have been built to deal with this situation, often focusing on just one aspect of single cell analysis, such as trajectory analysis (MONOCLE), pathway analysis (SCDE/PAGODA), dropout (MAST [5]), transcript counting and normalisation (SCRAN), quality control and visualisation (SCATER), RNA velocity (VELOCYTO), or focus on mostly a single experimental technique (CELL RANGER [6]). Some packages have attempted to unify all these analyses with a single, unified interface, of analysis, such as SEURAT or SCANPY (TODO sort out references).
+
+SCANPY is particularly interesting because:
+\begin{enumerate}
+\item It introduces an abstraction layer, called AnnData, which provides a unified interface for storage an processing of single cell data. This is similar to ExpressionSet in R, but unlike ExpressionSet, AnnData supports both serialisation and deserialisation to/from the filesystem (ExpressionSet supports only serialisation: https://stackoverflow.com/questions/47572109/writing-and-loading-expression-sets-to-and-from-csv-files), moreover, AnnData supports multiple file formats, including HDAF and loompy (https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1382-0).
+\item It is implemented in Python, which allows it to interact with a large variety of easy to use machine learning tools, including scikit-learn and tensorflow
+\item It currently supports most of the functionality provided by Seurat, including basic quality control, counting transcripts, producing tsne and umap plots, louvain clustering, but also provides additional capabilities, such as producing RNA velocity plots, enabled by introduction of layers into the AnnData object.
+\end{enumerate}
+
+Chapter 6 in this thesis describes an analysis implemented using scanpy and published in Circulation Research (TODO cross-reference the chapter and the paper).
 
 \section{Individual Specific Effects} \label{ISE}
 

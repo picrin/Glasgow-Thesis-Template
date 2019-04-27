@@ -1,20 +1,17 @@
 \chapter{Microarrays}
 \label{c:microarrays}
-\section{Introduction}
-
-The purpose of research conducted in the first year of my PhD programme was to search for and investigate possible ways of improving standard techniques in microarray analysis, including detection of differentially expressed and alternatively spliced genes. The research was based on a dataset obtained from patients with myotonic dystrophy and healthy controls. 
 
 \section{The dataset} \label{chapter_dataset}
 
-The research conducted  focused on a dataset obtained from 35 patients, including 31 Myotonic Dystrophy type 1 (MD1) cases and 5 healthy controls.
+The research conducted focused on a dataset obtained from 35 patients, including 31 Myotonic Dystrophy type 1 (DM1) cases and 5 healthy controls.
 
 The dataset was obtained prior to the commencement of this research project as part of an international research collaboration.
 
-MD1 is an autosomal dominant trinucleotide repeat disorder, with MD1 patients possessing abnormally large $(CTG)_n$ repeat in a non-coding region of the Dystrophia Myotonica Protein Kinase (DMPK) gene. The length of the repeat is positively correlated with severity of symptoms, which include muscle wasting and myotonia, cardiac conduction defects, cataracts, hypersomnia, abnormal glucose response, as well as premature baldness and testicular atrophy in males \parencite{Brook1992}.
+DM1 is an autosomal dominant trinucleotide repeat disorder, with DM1 patients possessing abnormally large $(CTG)_n$ repeat in a non-coding region of the Dystrophia Myotonica Protein Kinase (DMPK) gene. The length of the repeat is positively correlated with severity of symptoms, which include muscle wasting and myotonia, cardiac conduction defects, cataracts, hypersomnia, abnormal glucose response, as well as premature baldness and testicular atrophy in males \parencite{Brook1992}.
 
-All MD1 cases in this research were heterozygous for the abnormally expanded $(CTG)_n$ repeat.
+All DM1 cases in this research were heterozygous for the abnormally expanded $(CTG)_n$ repeat.
 
-There is significant degree of somatic mosaicism in MD1, especially in patients with long repeats, which motivates our definition of Modal Allele Length (MAL) to be the mode of the length of the longer of the two $(CTG)_n$ expansions present in MD1 loci of each patient (both cases and controls). Prior to the commencement of this research Modal Allele Length was determined by Polymerase Chain Reaction (PCR) of blood DNA for 35/36 patients. One patient refused blood donation.
+There is significant degree of somatic mosaicism in DM1, especially in patients with long repeats, which motivates our definition of Modal Allele Length (MAL) to be the mode of the length of the longer of the two $(CTG)_n$ expansions present in DM1 loci of each patient (both cases and controls). Prior to the commencement of this research MAL was determined by Polymerase Chain Reaction (PCR) of blood DNA for 35/36 patients. One patient refused blood donation.
 
 For each of the 35 blood-donating patients mRNA expression profiling of blood was performed using Affymetrix GeneChip™ Human Exon 1.0 ST microarray.
 
@@ -27,12 +24,12 @@ The rest of this report contains a detailed discussion of the results of analyse
 \section{Research Questions} \label{chapter_researchquestion}
 
 \begin{enumerate}
-\item \label{point_DGE} Based on the evidence gathered and using existing methodology is there evidence of Differential Gene Expression (DGE) in MD1?
+\item \label{point_DGE} Based on the evidence gathered and using existing methodology is there evidence of Differential Gene Expression (DGE) in DM1?
 \item \label{point_ISE} Can significance of detected genes be improved by developing new data analysis techniques? In particular, can Individual Specific Effects as outlined in \parencite{Kurkiewicz2017} be successfully applied in this context?
-\item \label{point_AS} Based on the evidence gathered can we support the hypothesis of Differential Alternative Splicing (DAS) in MD1?
+\item \label{point_AS} Based on the evidence gathered can we support the hypothesis of Differential Alternative Splicing (DAS) in DM1?
 \end{enumerate}
 
-By Differential Gene Expression (DGEs) in MD1 we mean presence of genes, whose expression level is correlated in a statistically significant way with with MAL.
+By Differential Gene Expression (DGEs) in DM1 we mean presence of genes, whose expression level is correlated in a statistically significant way with with MAL.
 
 By Differential Alternative Splicing (DAS) we mean presence of genes, which posses an alternative transcript, whose over- or under-expression, relative to other alternative transcripts, is correlated with MAL in a statistically significant way.
 
@@ -65,7 +62,7 @@ The standard pipeline uses the approach of \cite{McCall2012}, aggregating probes
 
 \section{Differential Expression and Individual Specific Effects} \label {chapter_DE}
 
-The purpose of the Differential Expression and Individual Specific Effects pipeline is to detect Differential Gene Expression (DGE) in MD1, as defined in chapter \ref{chapter_researchquestion}.
+The purpose of the Differential Expression and Individual Specific Effects pipeline is to detect Differential Gene Expression (DGE) in DM1, as defined in chapter \ref{chapter_researchquestion}.
 
 \subsection{Model fitting} \label{section_modelfitting}
 
@@ -85,7 +82,7 @@ Further, we turn into investigating Disease Specific Effects (DSEs), using $n$ m
 
 \section{Alternative Splicing} \label{chapter_altersplice}
 
-The purpose of the Alternative Splicing pipeline is to detect differential alternative Splicing in MD1, as defined in chapter \ref{chapter_researchquestion}.
+The purpose of the Alternative Splicing pipeline is to detect differential alternative Splicing in DM1, as defined in chapter \ref{chapter_researchquestion}.
 
 \subsection{Parsing Patient Data} \label{section_parsingpatientdata}
 
@@ -180,11 +177,11 @@ The following 4 plots show such difference in expression in probeset 3820698, wh
     \label{probeILF33}
 \end{figure}
 
-Putting aside issues around multiple hypothesis testing, exon targeted by probeset 3820698 can be regarded as differentially alternatively spliced, as patients with high MAL exhibit higher levels of expression at this exon relative to the total expression of the entire gene, a quantity measured by DASI. A likely explanation is that one or more isoforms containing the exon targeted by probeset 3820698 is preferentially expressed in MD1.
+Putting aside issues around multiple hypothesis testing, exon targeted by probeset 3820698 can be regarded as differentially alternatively spliced, as patients with high MAL exhibit higher levels of expression at this exon relative to the total expression of the entire gene, a quantity measured by DASI. A likely explanation is that one or more isoforms containing the exon targeted by probeset 3820698 is preferentially expressed in DM1.
 
 The effect of differential expression at this single exon can also be a possible cause of the slight differential expression of the entire gene (as seen in figure \ref{avgILF3}), as the high expression at this exon may significantly shift mean expression levels of the whole gene for patients with high MAL.
 
-\subsubsection{Whole Genome Analysis of Alternative Splicing in MD1} \label{section_wholegenome}
+\subsubsection{Whole Genome Analysis of Alternative Splicing in DM1} \label{section_wholegenome}
 
 In order to put the reasoning in subsection \ref{subsection_DASI} on a more rigorous footing we test against the null hypothesis that the best-fit line (as measured by minimising the sum of squares of residuals) of DASI vs modal allele length has slope 0. This line can be seen plotted for the exon targeted by probeset 3820698 in figures \ref{probeILF30}, \ref{probeILF31}, \ref{probeILF32}, \ref{probeILF33}. The p-values for null hypotheses that the slope of each respective regression line is 0 are respectively $7.72×10^{-4}$, $2.37×10^{-4}$, $1.84 × 10^{-3}$ and $2.64 × 10 ^{-4}$. (For reference, the p-value of a corresponding hypothesis for the slope of the best fit line of mean ILF3 expression vs MAL in figure \ref{avgILF3} is 0.0224.).
 
@@ -196,7 +193,7 @@ Obtained p-values are corrected using the Benjamini-Hochberg procedure \parencit
 
 For any FDR < 0.11 the list of genes is empty. At FDR = 0.12, the list contains 5049 genes.
 
-To test our findings against previously published research, we compare the list of 800 most significant genes from our list against the list of 40 genes whose splicing was previously identified as abnormal in MD1 by \cite{Nakamori2013}. Although the overlap between the two lists is a modest 7 genes, performing a hypergeometric test indicates that such overlap would be extremely unlikely to have occurred by chance, $p = 8.02 × 10^{-07}$. However, it is admittedly a poor scientific practice to arbitrarily fix a parameter of 800 most significant genes for the purpose of comparing the two lists (although the number was fixed \textit{a priori} rather than \textit{post hoc}). Work is being carried out to use a more appropriate rank-based test which will not need to assume such parameter.
+To test our findings against previously published research, we compare the list of 800 most significant genes from our list against the list of 40 genes whose splicing was previously identified as abnormal in DM1 by \cite{Nakamori2013}. Although the overlap between the two lists is a modest 7 genes, performing a hypergeometric test indicates that such overlap would be extremely unlikely to have occurred by chance, $p = 8.02 × 10^{-07}$. However, it is admittedly a poor scientific practice to arbitrarily fix a parameter of 800 most significant genes for the purpose of comparing the two lists (although the number was fixed \textit{a priori} rather than \textit{post hoc}). Work is being carried out to use a more appropriate rank-based test which will not need to assume such parameter.
 
 \subsection{Method to combine multiple p-values coming from repetitions of the same experiment} \label{pvalues}
 
